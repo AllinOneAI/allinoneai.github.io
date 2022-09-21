@@ -6,14 +6,17 @@ const reg   = new RegExp(input.pattern);
 input.oninput = () => {
     if (!reg.test(input.value)) {
         input.value = "";
-        check.disabled = true
-        cat.hidden = false
+        check.disabled = true;
     } else {
-        check.disabled = false
-        cat.hidden = true
+        check.disabled = false;
     }
 };
 
 check.onclick = () => {
-
+    cat.hidden = false;
+    cat.requestFullscreen();
+    setTimeout(() => { 
+        document.exitFullscreen();
+        cat.hidden = true;
+    }, 60);
 };
